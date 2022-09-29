@@ -1,8 +1,7 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.TestHost;
+using System.Net.Http.Json;
 using VacationRental.Api.Models;
+using VacationRental.Api.Tests.Configuration;
 using Xunit;
 
 namespace VacationRental.Api.Tests
@@ -12,14 +11,15 @@ namespace VacationRental.Api.Tests
     {
         private readonly HttpClient _client;
 
-        public GetCalendarTests(IntegrationFixture fixture)
+        public GetCalendarTests()
         {
-            _client = fixture.Client;
+            _client = new TestServerFixture().CreateClient();
         }
 
         [Fact]
         public async Task GivenCompleteRequest_WhenGetCalendar_ThenAGetReturnsTheCalculatedCalendar()
         {
+
             var postRentalRequest = new RentalBindingModel
             {
                 Units = 2

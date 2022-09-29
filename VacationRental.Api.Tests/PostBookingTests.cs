@@ -1,25 +1,24 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Json;
 using VacationRental.Api.Models;
+using VacationRental.Api.Tests.Configuration;
 using Xunit;
 
 namespace VacationRental.Api.Tests
 {
     [Collection("Integration")]
-    public class PostBookingTests
+    public class PostBookingTests 
     {
         private readonly HttpClient _client;
 
-        public PostBookingTests(IntegrationFixture fixture)
+        public PostBookingTests()
         {
-            _client = fixture.Client;
+            _client = new TestServerFixture().CreateClient();
         }
 
         [Fact]
         public async Task GivenCompleteRequest_WhenPostBooking_ThenAGetReturnsTheCreatedBooking()
         {
+
             var postRentalRequest = new RentalBindingModel
             {
                 Units = 4
