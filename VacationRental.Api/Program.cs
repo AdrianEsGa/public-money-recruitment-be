@@ -1,6 +1,4 @@
-﻿using VacationRental.Api;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var startup = new Startup(builder.Configuration);

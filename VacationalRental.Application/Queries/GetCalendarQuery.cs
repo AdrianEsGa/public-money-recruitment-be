@@ -9,9 +9,47 @@ public class GetCalendarQuery : IRequest<Calendar>
 
     public class GetCalendarQueryHandler : IRequestHandler<GetCalendarQuery, Calendar>
     {
-        public Task<Calendar> Handle(GetCalendarQuery request, CancellationToken cancellationToken)
+        private readonly IDictionary<int, Rental> _rentals;
+        private readonly IDictionary<int, Booking> _bookings;
+
+        public GetCalendarQueryHandler(IDictionary<int, Rental> rentals, IDictionary<int, Booking> bookings)
         {
-            throw new NotImplementedException();
+            _rentals = rentals;
+            _bookings = bookings;
+        }
+
+        public async Task<Calendar> Handle(GetCalendarQuery request, CancellationToken cancellationToken)
+        {
+            if (!_rentals.ContainsKey(request.RentalId))
+                throw new ApplicationException("Rental not found");
+
+            var result = new Calendar
+            {
+                RentalId = request.RentalId,
+                Dates = new List<CalendarDate>()
+            };
+
+            for (var i = 0; i < request.Nights; i++)
+            {
+                var date = new CalendarDate
+                {
+                    Date = request.Start.Date.AddDays(i),
+                    Bookings = new List<CalendarBooking>()
+                };
+
+                foreach (var booking in _bookings.Values)
+                {
+                    if (booking.RentalId == request.RentalId
+                        && booking.Start <= date.Date && booking.Start.AddDays(booking.Nights) > date.Date)
+                    {
+                        date.Bookings.Add(new CalendarBooking { Id = booking.Id });
+                    }
+                }
+
+                result.Dates.Add(date);
+            }
+
+            return result;
         }
     }
 

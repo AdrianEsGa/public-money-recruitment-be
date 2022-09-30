@@ -1,4 +1,7 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.OpenApi.Models;
+using VacationRental.Api.Infrastructure.Extensions;
 
 public class Startup
 {
@@ -9,7 +12,6 @@ public class Startup
 
     public IConfiguration Configuration { get; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
 
@@ -19,14 +21,18 @@ public class Startup
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vacation rental information", Version = "v1" });
         })
-         .AddMvcCore()
-         .AddApiExplorer();
-
-        services.AddSingleton<IDictionary<int, RentalViewModel>>(new Dictionary<int, RentalViewModel>());
-        services.AddSingleton<IDictionary<int, BookingViewModel>>(new Dictionary<int, BookingViewModel>());
+            .AddDatabase()
+            .AddCustomAutoMapper()
+            .AddMediatR(typeof(CreateBookingCommand).Assembly)
+            .AddFluentValidation(fv =>
+                {
+                    fv.RegisterValidatorsFromAssemblyContaining<BookingsController>();
+                    fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                })
+            .AddMvcCore()
+            .AddApiExplorer();
     }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
