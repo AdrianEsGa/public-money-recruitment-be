@@ -1,12 +1,9 @@
 ﻿using FluentValidation;
 
-namespace VacationRental.Api.RequestModels
+public class GetCalendarRequestModelValidator : AbstractValidator<GetCalendarRequestModel>
 {
-    public class GetCalendarRequestModelValidator : AbstractValidator<GetCalendarRequestModel>
+    public GetCalendarRequestModelValidator()
     {
-        public GetCalendarRequestModelValidator()
-        {
-            RuleFor(d => d.RentalId).GreaterThan(0);
-        }
+        RuleFor(d => d.RentalId).GreaterThan(0);
     }
 }

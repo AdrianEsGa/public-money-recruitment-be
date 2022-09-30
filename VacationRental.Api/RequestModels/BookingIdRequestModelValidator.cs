@@ -1,12 +1,9 @@
 ﻿using FluentValidation;
 
-namespace VacationRental.Api.RequestModels
+public class BookingIdRequestModelValidator : AbstractValidator<BookingIdRequestModel>
 {
-    public class BookingIdRequestModelValidator : AbstractValidator<BookingIdRequestModel>
+    public BookingIdRequestModelValidator()
     {
-        public BookingIdRequestModelValidator()
-        {
-            RuleFor(d => d.BookingId).GreaterThan(0);
-        }
+        RuleFor(d => d.BookingId).GreaterThan(0);
     }
 }

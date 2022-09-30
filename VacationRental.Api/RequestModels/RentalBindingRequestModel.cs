@@ -1,7 +1,4 @@
-﻿namespace VacationRental.Api.RequestModels
+﻿public class RentalBindingRequestModel
 {
-    public class RentalBindingRequestModel
-    {
-        public int Units { get; set; }
-    }
+    public int Units { get; set; }
 }

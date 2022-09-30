@@ -1,21 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Hosting;
 
-namespace VacationRental.Api.Tests.Configuration
+public class TestServerFixture : WebApplicationFactory<Startup>
 {
-    public class TestServerFixture : WebApplicationFactory<Startup>
+
+    protected override IHost CreateHost(IHostBuilder builder)
     {
 
-        protected override IHost CreateHost(IHostBuilder builder)
-        {
+        //builder.ConfigureServices(services =>
 
-            //builder.ConfigureServices(services =>
+        //    services.AddScoped()
 
-            //    services.AddScoped()
+        //);
 
-            //);
-
-            return base.CreateHost(builder);
-        }
+        return base.CreateHost(builder);
     }
 }

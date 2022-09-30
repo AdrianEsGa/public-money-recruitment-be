@@ -1,7 +1,4 @@
-﻿namespace VacationRental.Api.RequestModels
+﻿public class BookingIdRequestModel
 {
-    public class BookingIdRequestModel
-    {
-        public int BookingId { get; set; }
-    }
+    public int BookingId { get; set; }
 }
