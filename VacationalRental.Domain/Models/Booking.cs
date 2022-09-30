@@ -1,6 +1,6 @@
-﻿namespace VacationRental.Api.Models
+﻿namespace VacationRental.Domain.Models
 {
-    public class BookingViewModel
+    public class Booking
     {
         public int Id { get; set; }
         public int RentalId { get; set; }

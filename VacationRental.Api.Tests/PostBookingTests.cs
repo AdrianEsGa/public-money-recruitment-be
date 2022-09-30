@@ -31,7 +31,7 @@ namespace VacationRental.Api.Tests
                 postRentalResult = await postRentalResponse.Content.ReadAsAsync<ResourceIdViewModel>();
             }
 
-            var postBookingRequest = new BookingBindingModel
+            var postBookingRequest = new BookingBindingViewModel
             {
                  RentalId = postRentalResult.Id,
                  Nights = 3,
@@ -71,7 +71,7 @@ namespace VacationRental.Api.Tests
                 postRentalResult = await postRentalResponse.Content.ReadAsAsync<ResourceIdViewModel>();
             }
 
-            var postBooking1Request = new BookingBindingModel
+            var postBooking1Request = new BookingBindingViewModel
             {
                 RentalId = postRentalResult.Id,
                 Nights = 3,
@@ -83,7 +83,7 @@ namespace VacationRental.Api.Tests
                 Assert.True(postBooking1Response.IsSuccessStatusCode);
             }
 
-            var postBooking2Request = new BookingBindingModel
+            var postBooking2Request = new BookingBindingViewModel
             {
                 RentalId = postRentalResult.Id,
                 Nights = 1,
