@@ -1,7 +1,8 @@
 ﻿using System.Net.Http.Json;
-using VacationRental.Api.Models;
+using VacationRental.Api.ViewModels;
 using VacationRental.Api.Tests.Configuration;
 using Xunit;
+using VacationRental.Api.RequestModels;
 
 namespace VacationRental.Api.Tests
 {
@@ -18,7 +19,7 @@ namespace VacationRental.Api.Tests
         [Fact]
         public async Task GivenCompleteRequest_WhenPostRental_ThenAGetReturnsTheCreatedRental()
         {
-            var request = new RentalBindingModel
+            var request = new RentalBindingRequestModel
             {
                 Units = 25
             };

@@ -1,7 +1,8 @@
 ﻿using System.Net.Http.Json;
-using VacationRental.Api.Models;
+using VacationRental.Api.ViewModels;
 using VacationRental.Api.Tests.Configuration;
 using Xunit;
+using VacationRental.Api.RequestModels;
 
 namespace VacationRental.Api.Tests
 {
@@ -19,7 +20,7 @@ namespace VacationRental.Api.Tests
         public async Task GivenCompleteRequest_WhenPostBooking_ThenAGetReturnsTheCreatedBooking()
         {
 
-            var postRentalRequest = new RentalBindingModel
+            var postRentalRequest = new RentalBindingRequestModel
             {
                 Units = 4
             };
@@ -31,7 +32,7 @@ namespace VacationRental.Api.Tests
                 postRentalResult = await postRentalResponse.Content.ReadAsAsync<ResourceIdViewModel>();
             }
 
-            var postBookingRequest = new BookingBindingViewModel
+            var postBookingRequest = new BookingBindingRequestModel
             {
                  RentalId = postRentalResult.Id,
                  Nights = 3,
@@ -59,7 +60,7 @@ namespace VacationRental.Api.Tests
         [Fact]
         public async Task GivenCompleteRequest_WhenPostBooking_ThenAPostReturnsErrorWhenThereIsOverbooking()
         {
-            var postRentalRequest = new RentalBindingModel
+            var postRentalRequest = new RentalBindingRequestModel
             {
                 Units = 1
             };
@@ -71,7 +72,7 @@ namespace VacationRental.Api.Tests
                 postRentalResult = await postRentalResponse.Content.ReadAsAsync<ResourceIdViewModel>();
             }
 
-            var postBooking1Request = new BookingBindingViewModel
+            var postBooking1Request = new BookingBindingRequestModel
             {
                 RentalId = postRentalResult.Id,
                 Nights = 3,
@@ -83,7 +84,7 @@ namespace VacationRental.Api.Tests
                 Assert.True(postBooking1Response.IsSuccessStatusCode);
             }
 
-            var postBooking2Request = new BookingBindingViewModel
+            var postBooking2Request = new BookingBindingRequestModel
             {
                 RentalId = postRentalResult.Id,
                 Nights = 1,

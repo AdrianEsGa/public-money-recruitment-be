@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VacationRental.Api.Models;
+using VacationRental.Api.ViewModels;
 
 namespace VacationRental.Api.Controllers
 {

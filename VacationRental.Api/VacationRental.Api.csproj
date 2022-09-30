@@ -5,8 +5,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore"  />
-		<PackageReference Include="FluentValidation "  />
+		<PackageReference Include="Swashbuckle.AspNetCore" />
+		<PackageReference Include="FluentValidation " />
+		<PackageReference Include="AutoMapper" />
 	</ItemGroup>
 
 	<ItemGroup>

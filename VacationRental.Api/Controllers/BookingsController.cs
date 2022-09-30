@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VacationRental.Api.Models;
+using VacationRental.Api.RequestModels;
+using VacationRental.Api.ViewModels;
 
 namespace VacationRental.Api.Controllers
 {
@@ -29,7 +30,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpPost]
-        public ResourceIdViewModel Post(BookingBindingViewModel model)
+        public ResourceIdViewModel Post(BookingBindingRequestModel model)
         {
             if (model.Nights <= 0)
                 throw new ApplicationException("Nigts must be positive");

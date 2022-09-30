@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VacationRental.Api.Models;
+using VacationRental.Api.ViewModels;
+using VacationRental.Api.RequestModels;
 
 namespace VacationRental.Api.Controllers
 {
@@ -25,7 +26,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpPost]
-        public ResourceIdViewModel Post(RentalBindingModel model)
+        public ResourceIdViewModel Post(RentalBindingRequestModel model)
         {
             var key = new ResourceIdViewModel { Id = _rentals.Keys.Count + 1 };
 

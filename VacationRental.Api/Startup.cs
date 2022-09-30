@@ -1,5 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
-using VacationRental.Api.Models;
+using VacationRental.Api.ViewModels;
 
 
 namespace VacationRental.Api
