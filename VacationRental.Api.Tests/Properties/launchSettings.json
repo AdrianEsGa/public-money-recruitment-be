@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "VacationRental.Api.Tests": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:64563;http://localhost:64564"
+    }
+  }
+}

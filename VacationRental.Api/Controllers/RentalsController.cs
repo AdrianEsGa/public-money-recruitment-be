@@ -1,43 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using VacationRental.Api.Models;
 
-namespace VacationRental.Api.Controllers
+[Route("api/v1/rentals")]
+[ApiController]
+public class RentalsController : ControllerBase
 {
-    [Route("api/v1/rentals")]
-    [ApiController]
-    public class RentalsController : ControllerBase
+    private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
+
+    public RentalsController(IMapper mapper, IMediator mediator)
     {
-        private readonly IDictionary<int, RentalViewModel> _rentals;
+        _mapper = mapper;
+        _mediator = mediator;
+    }
 
-        public RentalsController(IDictionary<int, RentalViewModel> rentals)
-        {
-            _rentals = rentals;
-        }
+    [HttpGet]
+    [Route("{rentalId:int}")]
+    public async Task<RentalViewModel> Get(int rentalId)
+    {
+        var command = new GetRentalQuery { RentalId = rentalId };
+        var model = await _mediator.Send(command);
+        return _mapper.Map<RentalViewModel>(model);
+    }
 
-        [HttpGet]
-        [Route("{rentalId:int}")]
-        public RentalViewModel Get(int rentalId)
-        {
-            if (!_rentals.ContainsKey(rentalId))
-                throw new ApplicationException("Rental not found");
-
-            return _rentals[rentalId];
-        }
-
-        [HttpPost]
-        public ResourceIdViewModel Post(RentalBindingModel model)
-        {
-            var key = new ResourceIdViewModel { Id = _rentals.Keys.Count + 1 };
-
-            _rentals.Add(key.Id, new RentalViewModel
-            {
-                Id = key.Id,
-                Units = model.Units
-            });
-
-            return key;
-        }
+    [HttpPost]
+    public async Task<ResourceIdViewModel> Post(RentalBindingRequestModel request)
+    {
+        var command = _mapper.Map<CreateRentalCommand>(request);
+        var model = await _mediator.Send(command);
+        return _mapper.Map<ResourceIdViewModel>(model);
     }
 }
+
