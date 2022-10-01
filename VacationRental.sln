@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental.Api", "Vacat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationRental.Api.Tests", "VacationRental.Api.Tests\VacationRental.Api.Tests.csproj", "{BBE953AC-EA4C-4AA4-8965-2446E14754A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationalRental.Application", "VacationalRental.Application\VacationalRental.Application.csproj", "{CFA8F2A1-118F-4567-B1BE-0F143336614A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationalRental.Application", "VacationalRental.Application\VacationalRental.Application.csproj", "{CFA8F2A1-118F-4567-B1BE-0F143336614A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationalRental.Domain", "VacationalRental.Domain\VacationalRental.Domain.csproj", "{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VacationalRental.Domain", "VacationalRental.Domain\VacationalRental.Domain.csproj", "{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{024AD4B4-179C-4D58-B0E2-CBBC27C441F1}"
 EndProject
@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacationalRental.Infrastructure", "VacationalRental.Infrastructure\VacationalRental.Infrastructure.csproj", "{74E489E2-791E-49F0-95A9-22BF408833FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74E489E2-791E-49F0-95A9-22BF408833FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74E489E2-791E-49F0-95A9-22BF408833FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74E489E2-791E-49F0-95A9-22BF408833FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74E489E2-791E-49F0-95A9-22BF408833FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{BBE953AC-EA4C-4AA4-8965-2446E14754A9} = {024AD4B4-179C-4D58-B0E2-CBBC27C441F1}
 		{CFA8F2A1-118F-4567-B1BE-0F143336614A} = {024AD4B4-179C-4D58-B0E2-CBBC27C441F1}
 		{08B4F7A5-02FF-4E9C-B48B-D3D0DF6AAF36} = {024AD4B4-179C-4D58-B0E2-CBBC27C441F1}
+		{74E489E2-791E-49F0-95A9-22BF408833FF} = {024AD4B4-179C-4D58-B0E2-CBBC27C441F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37FB247D-9317-408C-8221-2854E902FF63}

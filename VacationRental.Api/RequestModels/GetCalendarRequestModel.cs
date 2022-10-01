@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-public class GetCalendarRequestModel
+﻿public class GetCalendarRequestModel
 {
-    [FromQuery]
-    public int RentalId { get; set; }
-    [FromQuery]
-    public DateTime Start { get; set; }
-    [FromQuery]
-    public int Nights { get; set; }
+    public int rentalId { get; set; }
+    public DateTime start { get; set; }
+    public int nights { get; set; }
 }

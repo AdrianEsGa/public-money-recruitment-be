@@ -1,8 +1,5 @@
-﻿namespace VacationRental.Domain.Models
+﻿public class Calendar
 {
-    public class Calendar
-    {
-        public int RentalId { get; set; }
-        public List<CalendarDate> Dates { get; set; }
-    }
+    public int RentalId { get; set; }
+    public List<CalendarDate> Dates { get; set; }
 }

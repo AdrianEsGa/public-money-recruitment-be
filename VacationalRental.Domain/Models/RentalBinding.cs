@@ -1,7 +1,4 @@
-﻿namespace VacationRental.Domain.Models
+﻿public class RentalBinding
 {
-    public class RentalBinding
-    {
-        public int Units { get; set; }
-    }
+    public int Units { get; set; }
 }

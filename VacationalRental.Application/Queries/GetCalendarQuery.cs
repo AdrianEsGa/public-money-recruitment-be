@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using VacationRental.Domain.Models;
 
 public class GetCalendarQuery : IRequest<Calendar>
 {
@@ -29,20 +28,27 @@ public class GetCalendarQuery : IRequest<Calendar>
                 Dates = new List<CalendarDate>()
             };
 
+            var preparationTime = _rentals[request.RentalId].PreparationTimeInDays;
+
             for (var i = 0; i < request.Nights; i++)
             {
                 var date = new CalendarDate
                 {
                     Date = request.Start.Date.AddDays(i),
-                    Bookings = new List<CalendarBooking>()
+                    Bookings = new List<CalendarBooking>(),
+                    PreparationTimes = new List<PreparationTime>()
                 };
 
                 foreach (var booking in _bookings.Values)
                 {
-                    if (booking.RentalId == request.RentalId
-                        && booking.Start <= date.Date && booking.Start.AddDays(booking.Nights) > date.Date)
+                    if (booking.IsBooked(request.RentalId, date.Date))
                     {
-                        date.Bookings.Add(new CalendarBooking { Id = booking.Id });
+                        date.Bookings.Add(new CalendarBooking { Id = booking.Id, Unit = booking.Unit.Id });
+                    }
+
+                    if (booking.IsInPreparationTime(request.RentalId, preparationTime, date.Date))
+                    {
+                        date.PreparationTimes.Add(new PreparationTime { Unit = booking.Unit.Id });
                     }
                 }
 
@@ -52,5 +58,4 @@ public class GetCalendarQuery : IRequest<Calendar>
             return result;
         }
     }
-
 }

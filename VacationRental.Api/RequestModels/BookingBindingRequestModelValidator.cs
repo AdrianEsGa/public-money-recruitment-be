@@ -4,7 +4,7 @@ public class BookingBindingRequestModelValidator : AbstractValidator<BookingBind
 {
     public BookingBindingRequestModelValidator()
     {
-        RuleFor(d => d.Nights).GreaterThan(0);
+        RuleFor(d => d.nights).GreaterThan(0);
     }
 }
 

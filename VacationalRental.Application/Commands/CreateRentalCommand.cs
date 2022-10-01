@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using VacationRental.Domain.Models;
 
 public class CreateRentalCommand : IRequest<ResourceId>
 {
     public int Units { get; set; }
+    public int PreparationTimeInDays { get; set; }
 }
 
 public class CreateRentalCommandHandler : IRequestHandler<CreateRentalCommand, ResourceId>
@@ -22,7 +22,12 @@ public class CreateRentalCommandHandler : IRequestHandler<CreateRentalCommand, R
         _rentals.Add(key.Id, new Rental
         {
             Id = key.Id,
-            Units = request.Units
+            Units = request.Units,
+            PreparationTimeInDays = request.PreparationTimeInDays,
+            UnitValues = Enumerable.Range(1, request.Units).Select(x => new Unit
+            {
+                Id = x,
+            }).ToList()
         });
 
         return key;

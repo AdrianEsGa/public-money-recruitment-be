@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using VacationRental.Domain.Models;
 
 namespace VacationRental.Api.Infrastructure.Extensions
 {
@@ -24,8 +23,19 @@ namespace VacationRental.Api.Infrastructure.Extensions
                                 cfg.CreateMap<ResourceId, ResourceIdViewModel>();
                                 cfg.CreateMap<Booking, BookingViewModel>();
                                 cfg.CreateMap<Calendar, CalendarViewModel>();
+                                cfg.CreateMap<CalendarDate, CalendarDateViewModel>();
+                                cfg.CreateMap<CalendarBooking, CalendarBookingViewModel>();
+                                cfg.CreateMap<PreparationTime, PreparationTimeViewModel>();
                                 cfg.CreateMap<Rental, RentalViewModel>();
 
                             }).CreateMapper());
+
+        public static IServiceCollection AddServices(this IServiceCollection services) =>
+                services.AddSingleton<IService, Service>();
+
+        public static IServiceCollection AddRepositories(this IServiceCollection services) =>
+                services.AddSingleton<IRepository, Repository>();
     }
+
+
 }

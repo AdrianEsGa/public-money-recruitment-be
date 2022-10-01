@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using VacationRental.Domain.Models;
 
 public class GetBookingQuery : IRequest<Booking>
 {

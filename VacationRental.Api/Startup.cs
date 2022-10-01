@@ -43,6 +43,5 @@ public class Startup
         app.UseRouting();
         app.UseSwagger();
         app.UseSwaggerUI(opts => opts.SwaggerEndpoint("/swagger/v1/swagger.json", "VacationRental v1"));
-
     }
 }

@@ -1,13 +1,13 @@
 ﻿public class BookingBindingRequestModel
 {
-    public int RentalId { get; set; }
+    public int rentalId { get; set; }
 
-    public DateTime Start
+    public DateTime start
     {
         get => _startIgnoreTime;
         set => _startIgnoreTime = value.Date;
     }
 
     private DateTime _startIgnoreTime;
-    public int Nights { get; set; }
+    public int nights { get; set; }
 }

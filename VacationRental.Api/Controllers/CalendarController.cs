@@ -16,7 +16,7 @@ public class CalendarController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<CalendarViewModel> Get([FromRoute] GetCalendarRequestModel request)
+    public async Task<CalendarViewModel> Get([FromQuery] GetCalendarRequestModel request)
     {
         var command = _mapper.Map<GetCalendarQuery>(request);
         var model = await _mediator.Send(command);

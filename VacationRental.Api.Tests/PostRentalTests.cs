@@ -17,7 +17,8 @@ public class PostRentalTests
     {
         var request = new RentalBindingRequestModel
         {
-            Units = 25
+            Units = 25,
+            PreparationTimeInDays = 1
         };
 
         ResourceIdViewModel postResult;
@@ -33,6 +34,7 @@ public class PostRentalTests
 
             var getResult = await getResponse.Content.ReadAsAsync<RentalViewModel>();
             Assert.Equal(request.Units, getResult.Units);
+            Assert.Equal(request.PreparationTimeInDays, getResult.PreparationTimeInDays);
         }
     }
 }

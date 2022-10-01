@@ -4,6 +4,6 @@ public class GetCalendarRequestModelValidator : AbstractValidator<GetCalendarReq
 {
     public GetCalendarRequestModelValidator()
     {
-        RuleFor(d => d.RentalId).GreaterThan(0);
+        RuleFor(d => d.rentalId).GreaterThan(0);
     }
 }
